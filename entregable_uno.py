@@ -59,7 +59,12 @@ class ProcesadorDatos:
 
         rng_b = random.Random(self.cc_uno)
         rng_c = random.Random(self.cc_dos)
-
+        with open("datos_out.txt", "w") as f:
+            f.write("i,b,c\n")
+            for i in range(1, self.n + 1):
+                b = rng_b.uniform(-5, 5)  # valores aleatorios entre -5 y 5
+                c = rng_c.uniform(0, 5)   # valores aleatorios entre 0 y 5
+                f.write(f"{i},{b:.6f},{c:.6f}\n")
         return "ok"
 
     # 3) Leer datos_out, agregar etiqueta y graficar
