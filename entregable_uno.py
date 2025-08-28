@@ -13,6 +13,7 @@ import os
 import math
 import random
 import matplotlib.pyplot as plt
+from collections import Counter
 
 class ProcesadorDatos:
     def __init__(self, ruta_in="datos_in.txt", ruta_out="datos_out.txt", ruta_img="grafico_out.jpg"):
@@ -78,6 +79,43 @@ class ProcesadorDatos:
 
         if not lineas or not lineas[0].startswith("i,b,c"):
             raise ValueError("El archivo no tiene el encabezado esperado 'i,b,c'")
+        etiquetas_posibles = ["anciano", "anciana", "mujer", "hombre", "niño", "niña"]
+
+        etiquetas_asignadas = []
+
+        for linea in lineas[1:]:
+            partes = linea.split(",")
+            if len(partes) != 3:
+                continue
+            etiqueta = random.choice(etiquetas_posibles)
+            etiquetas_asignadas.append(etiqueta)
+
+        # Contar frecuencia de cada etiqueta
+        conteo = Counter(etiquetas_asignadas)
+
+        # Gráfico de barras
+        etiquetas = list(conteo.keys())
+        cantidades = list(conteo.values())
+        colores = {
+            "anciano": "blue",
+            "anciana": "purple",
+            "mujer": "red",
+            "hombre": "green",
+            "niño": "orange",
+            "niña": "pink"
+        }
+
+        plt.figure(figsize=(8, 6))
+        plt.bar(etiquetas, cantidades, color=[colores[e] for e in etiquetas])
+        plt.title("Cantidad de registros por etiqueta")
+        plt.xlabel("Etiqueta")
+        plt.ylabel("Cantidad")
+        plt.grid(axis="y")
+        plt.tight_layout()
+        plt.savefig("grafico_out.jpg")
+        plt.close()
+        
+
         return "ok"
 
 
