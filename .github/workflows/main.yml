@@ -4,6 +4,9 @@ on:
   push:
     branches: [ "main" ]
 
+permissions:
+  contents: write  # 🔧 Esto le da permiso de escritura al bot
+
 jobs:
   build:
     runs-on: windows-latest
