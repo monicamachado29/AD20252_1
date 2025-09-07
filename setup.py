@@ -12,6 +12,8 @@ setup(
         "openpyxl",
         "requests",
         "beautifulsoup4",
-        "matplotlib"
+        "matplotlib",
+        "kagglehub[pandas-datasets]>=0.3.8",
+        "seaborn"
     ]
 )
