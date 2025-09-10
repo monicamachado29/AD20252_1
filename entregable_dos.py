@@ -1,7 +1,7 @@
 
 
 
-from SRC.Clases AD.datagenerator import DataGenerator
+from SRC.clases_ad.datagenerator import DataGenerator
 import pandas as pd
 
 class Entregable_dos():
