@@ -68,12 +68,6 @@ class Entregable_dos():
         print("✅ Gráfico guardado como 'entregable2.jpg'")    
 
 
-
-        
-    
-
-
-
 entdos= Entregable_dos()
 df = entdos.obtener_datos_kaggle(("abdullah0a/wine-quality-red-white-analysis-dataset"))
 print(df.head(2))
